@@ -49,7 +49,7 @@ const ImgStyled = styled.div`
   }
   .nav {
     // margin-left: 10px;
-    max-height: 54px;
+    height: 56px;
     position: absolute;
   }
   body {

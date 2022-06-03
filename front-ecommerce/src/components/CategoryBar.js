@@ -33,12 +33,11 @@ export default function CategoryBar() {
 }
 
 const Wrapper = styled.div`
-  body {
-    margin-top: 20rem;
-  }
+  background-color: #fff;
+  height: 49px;
+  border-bottom: solid #ccc 1px;
+
   header {
-    margin-top: 70rem;
-    border-bottom: solid #ccc 1px;
     text-emphasis: 5px;
   }
 `;
