@@ -2,14 +2,14 @@ import React from 'react';
 
 export function ListFilter({ label, id }) {
   return (
-    <div class='form-check'>
+    <div className='form-check'>
       <input
-        class='form-check-input rounded-0'
+        className='form-check-input rounded-0'
         type='checkbox'
         value=''
         id={id}
       />
-      <label class='form-check-label' for={id}>
+      <label className='form-check-label' htmlFor={id}>
         {label}
       </label>
     </div>
@@ -18,14 +18,14 @@ export function ListFilter({ label, id }) {
 
 export function ClearFilter() {
   return (
-    <div class='form-check'>
+    <div className='form-check'>
       <input
-        class='form-check-input rounded-0'
+        className='form-check-input rounded-0'
         type='checkbox'
         value=''
         id='clear-all'
       />
-      <label class='form-check-label' for='clear-all'>
+      <label className='form-check-label' htmlFor='clear-all'>
         clear all
       </label>
     </div>

@@ -1,23 +1,28 @@
 import React from 'react';
 import styled from 'styled-components';
 import { ListFilter } from '../components/ListFilter';
+import { useGlobalContext } from '../context';
 
 export default function ProductList() {
+  const { setQueryString, productList, categories, brands } =
+    useGlobalContext();
+
+  // console.log(productList.product_img[0]);
   return (
     <Wrapper>
       <div className='flex-item item1 p-3'>
         <h5 className='filter-header'>filters</h5>
         <div className='filters text-uppercase'>
           <div className='filter-item brand-filter'>
-            <h7>brands</h7>
+            <h6>brands</h6>
             <div className='check-boxes'>
-              <ListFilter label='adidad' id='adidas' />
-              <ListFilter label='nike' id='nike' />
-              <ListFilter label='reebok' id='reebok' />
+              {brands.map((brand, index) => {
+                return <ListFilter label={brand} id={brand} key={index} />;
+              })}
             </div>
           </div>
           <div className='filter-item rating-filter'>
-            <h7>customer ratings</h7>
+            <h6>customer ratings</h6>
             <div className='check-boxes'>
               <ListFilter label='1 stars & above' id='1' />
               <ListFilter label='2 stars & above' id='2' />
@@ -26,7 +31,7 @@ export default function ProductList() {
             </div>
           </div>
           <div className='filter-item discount-filter'>
-            <h7>
+            <h6>
               discounts
               <div className='check-boxes'>
                 <ListFilter label='10% or more' id='10'></ListFilter>
@@ -34,27 +39,27 @@ export default function ProductList() {
                 <ListFilter label='30% or more' id='30'></ListFilter>
                 <ListFilter label='40% or more' id='40'></ListFilter>
               </div>
-            </h7>
+            </h6>
           </div>
         </div>
       </div>
       <div className='flex-item item2'>
-        <div className='d-flex'>
-          <div className='card m-2'>
-            <h2>product name</h2>
-          </div>
-          <div className='card m-2'>
-            <h2>product name</h2>
-          </div>
-          <div className='card m-2'>
-            <h2>product name</h2>
-          </div>
-          <div className='card m-2'>
-            <h2>product name</h2>
-          </div>
-          <div className='card m-2'>
-            <h2>product name</h2>
-          </div>
+        <div className='grid-container'>
+          {productList.map((product, index) => {
+            return (
+              <div className='card m-2' key={index}>
+                <img
+                  className='card-img-top'
+                  src={product.product_img[0]}
+                  alt='product image'
+                />
+                <div className='card-footer'>
+                  <p>{product.product_name}</p>
+                  <p>{product.discounted_price}</p>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </Wrapper>
@@ -99,5 +104,10 @@ const Wrapper = styled.div`
     padding-top: 15px;
     padding-bottom: 20px;
     margin-bottom: 25px;
+  }
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 250px);
+    grid-template-rows: auto;
   }
 `;
