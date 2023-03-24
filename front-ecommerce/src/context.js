@@ -6,7 +6,7 @@ const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [productList, setProductList] = useState([]);
-  const [queryString, setQueryString] = useState(``);
+  const [queryString, setQueryString] = useState('');
   const [categories, setCategories] = useState([]);
   const [brands, setBrands] = useState([]);
 
@@ -20,7 +20,8 @@ const AppProvider = ({ children }) => {
 
   const fetchProducts = async () => {
     try {
-      const { data } = await axios.get(`/api/v1/products?` + `${queryString}`);
+      const { data } = await axios.get(`/api/v1/products?${queryString}`);
+      console.log('queryString:', queryString);
       saveProducts(data);
     } catch (err) {
       console.error(err);
@@ -32,7 +33,7 @@ const AppProvider = ({ children }) => {
     fetchProducts();
   }, [queryString]);
 
-  // console.log('products:', productList);
+  console.log('products:', productList);
   // console.log('categories:', categories);
   // console.log('brands: ', brands);
   return (
@@ -42,6 +43,7 @@ const AppProvider = ({ children }) => {
         productList,
         categories,
         brands,
+        queryString,
         setQueryString,
       }}
     >

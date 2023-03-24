@@ -1,6 +1,16 @@
 body {
   text-transform: capitalize;
   background-color: #edeff2;
+  /* text-align: justify; */
+  /* color: #2384bf; */
+  background: linear-gradient(
+    160deg,
+    rgba(46, 169, 245, 0.462),
+    rgba(46, 169, 245, 0.462),
+    60%,
+    rgba(255, 255, 255, 0.531) 60%,
+    rgba(255, 255, 255, 0.531)
+  );
   /* text-emphasis: 5%; */
   /* border-bottom: solid black 1px; */
   /* justify-content:  */

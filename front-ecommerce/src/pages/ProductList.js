@@ -4,10 +4,14 @@ import { ListFilter } from '../components/ListFilter';
 import { useGlobalContext } from '../context';
 
 export default function ProductList() {
-  const { setQueryString, productList, categories, brands } =
+  const { setQueryString, queryString, productList, categories, brands } =
     useGlobalContext();
 
-  // console.log(productList.product_img[0]);
+  const handleBrand = (brand) => {
+    setQueryString(queryString.concat(`&brand=${brand}`));
+  };
+  console.log(queryString);
+
   return (
     <Wrapper>
       <div className='flex-item item1 p-3'>
@@ -17,7 +21,14 @@ export default function ProductList() {
             <h6>brands</h6>
             <div className='check-boxes'>
               {brands.map((brand, index) => {
-                return <ListFilter label={brand} id={brand} key={index} />;
+                return (
+                  <ListFilter
+                    label={brand}
+                    id={brand}
+                    key={index}
+                    onClick={() => handleBrand({ brand })}
+                  />
+                );
               })}
             </div>
           </div>
@@ -50,7 +61,7 @@ export default function ProductList() {
               <div className='card m-2' key={index}>
                 <img
                   className='card-img-top'
-                  src={product.product_img[0]}
+                  src='https://rukminim1.flixcart.com/image/416/416/l0sgyvk0/headphone/e/w/c/buds-z2-oneplus-original-imagcg5gfpcg5ndv.jpeg?q=70'
                   alt='product image'
                 />
                 <div className='card-footer'>
@@ -107,7 +118,7 @@ const Wrapper = styled.div`
   }
   .grid-container {
     display: grid;
-    grid-template-columns: repeat(5, 250px);
+    grid-template-columns: repeat(6, 200px);
     grid-template-rows: auto;
   }
 `;

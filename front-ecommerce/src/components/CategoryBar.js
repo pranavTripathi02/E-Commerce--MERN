@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import { useGlobalContext } from '../context';
 
 export default function CategoryBar() {
-  const { categories, setQueryString } = useGlobalContext();
-  const catButton = (cat) => {
-    setQueryString(+`${cat}`);
+  const { categories, setQueryString, queryString } = useGlobalContext();
+  const handleCategory = ({ cat }) => {
+    setQueryString(queryString.concat(`&product_category=${cat}`));
   };
   return (
     <Wrapper>
@@ -17,7 +17,9 @@ export default function CategoryBar() {
                 <button
                   href=''
                   className='btn btn-white my-1 nav-link'
-                  onClick={catButton(cat)}
+                  onClick={() => {
+                    handleCategory({ cat });
+                  }}
                 >
                   {cat}
                 </button>

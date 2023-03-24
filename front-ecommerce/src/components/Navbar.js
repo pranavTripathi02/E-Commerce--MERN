@@ -12,9 +12,9 @@ export default function Navbar() {
               <div className='d-flex'>
                 <img
                   className='nav-logo logo brand nav-brand brand'
-                  src='https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/flipkart-plus_8d85f4.png'
-                  alt='flipkart'
-                  title='flipkart'
+                  src=''
+                  alt=''
+                  title=''
                 />
               </div>
             </div>
